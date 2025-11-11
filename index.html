@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday</title>
+  <style>
+    :root{
+      --bg:#0f172a;
+      --card:#0b1220;
+      --accent:#ff6b6b;
+      --text:#f8fafc;
+    }
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+    body{
+      background: radial-gradient(circle at 10% 20%, rgba(255,107,107,0.10), transparent 10%),
+                  radial-gradient(circle at 90% 80%, rgba(99,102,241,0.06), transparent 8%),
+                  var(--bg);
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      box-sizing:border-box;
+    }
+    .card{
+      width:100%;
+      max-width:720px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:16px;
+      padding:36px;
+      box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+      text-align:center;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    h1{
+      margin:0 0 8px 0;
+      font-size:36px;
+      letter-spacing:0.6px;
+    }
+    .emoji{
+      font-size:64px;
+      margin:8px 0 18px 0;
+      display:block;
+    }
+    p.lead{
+      margin:0 0 20px 0;
+      font-size:18px;
+      opacity:0.9;
+      white-space:pre-line;
+    }
+    .btn{
+      display:inline-block;
+      padding:12px 20px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      background: linear-gradient(90deg, var(--accent), #ff9a6b);
+      color:white;
+      box-shadow: 0 6px 18px rgba(255,107,107,0.14);
+    }
+    .footer{
+      margin-top:22px;
+      font-size:13px;
+      color:rgba(255,255,255,0.6);
+    }
+    @media (max-width:420px){
+      .card{padding:20px}
+      h1{font-size:28px}
+      .emoji{font-size:48px}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <a class="btn" href="#" onclick="document.getElementById('title').scrollIntoView();return false;">Click Here!</a>
+
+    <h1 id="title">Happy Birthday</h1>
+    <span class="emoji" aria-hidden="true">🎉</span>
+
+    <p class="lead">
+Happy birthday, my best wishes to you. Sorry I can't celebrate in person🥺, but I sincerely wish you a happy birthday and may good things always be with you.
+
+Selamattt ulangg tahun yaa cantikkk, semoga rezekinya dilancarkan dan urusannya dimudahkan, semoga impian ayang di tahun ini bisa tercapai, semoga sehat selalu sayangg, dan semoga ayang bisa menjadi diri sendiri yang lebih baik dari sebelumnya untuk ke depannya. Jangan lupa sayang sama kedua orang tua. Terima kasih selama ini bisa terus sama aku dan sayang sama aku. Jangan lupa bahagia selalu yaa💏
+    </p>
+
+    <p class="footer">Made with ❤</p>
+  </main>
+
+  <script>
+    (function(){
+      const el = document.querySelector('.emoji');
+      el.addEventListener('click', ()=>{
+        for(let i=0;i<40;i++){
+          const s = document.createElement('div');
+          s.textContent = '🎊';
+          s.style.position='fixed';
+          s.style.left = (50 + (Math.random()-0.5)*60) + '%';
+          s.style.top = (30 + Math.random()*40) + '%';
+          s.style.fontSize = (12 + Math.random()*28) + 'px';
+          s.style.pointerEvents='none';
+          s.style.transition = 'transform 1s ease-out, opacity 1s';
+          document.body.appendChild(s);
+          requestAnimationFrame(()=> {
+            s.style.transform = 'translateY(300px) rotate('+ (Math.random()*720-360) +'deg)';
+            s.style.opacity = '0';
+          });
+          setTimeout(()=> document.body.removeChild(s), 1200);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
